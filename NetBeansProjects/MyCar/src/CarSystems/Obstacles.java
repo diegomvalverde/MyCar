@@ -3,14 +3,14 @@ package CarSystems;
 /*
 This is the class for the obxtacles of the simulation.
  */
-public class Obstacles implements Systems
+public class Obstacles implements ISystems
 {
     private boolean Nigth;
     private int MaxVelocity;
     private int MinVelocity;
     private boolean Rain;
     
-    Obstacles()
+    public Obstacles()
     {
         Nigth = false;
         MaxVelocity = 0;

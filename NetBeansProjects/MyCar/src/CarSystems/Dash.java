@@ -5,7 +5,7 @@ This is the class for the dash of the car, it is basically to show information
 on the interface.
  */
 
-public class Dash implements Systems
+public class Dash implements ISystems
 {
     private int Revolutions;
     private int Velocity;
@@ -13,7 +13,7 @@ public class Dash implements Systems
     private boolean WiperWasher;
     private int LosedPoints;
     
-    Dash()
+    public Dash()
     {
     Revolutions = 0;
     Velocity = 0;

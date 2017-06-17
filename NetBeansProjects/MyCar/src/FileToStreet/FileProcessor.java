@@ -113,8 +113,8 @@ public class FileProcessor
                             && !"F".equals(pContent.substring(i, m+1)) && !"m".equals(pContent.substring(i, m+1))
                             && pContent.substring(i, m+1) != null)
                     {
-                        System.out.println(i);
-                        System.out.println(m);
+//                        System.out.println(i);
+//                        System.out.println(m);
                         
                         entero += pContent.substring(i,m+1);
                         i++;
@@ -123,10 +123,32 @@ public class FileProcessor
                     int r = Integer.parseInt(entero);
                     m--;
                     i--;
-                    StraightLine tmp = new StraightLine(r);
-                    tmp.info(MaxVelocity, MinVelocity, Nigth, Morning, Rain);
-                    Road.add(Road.size(), tmp);
+                    MinVelocity = r;
                         break;
+                    }
+                case "M":{
+                    String entero = "0";
+                    m++;
+                    i++;
+                    while(!".".equals(pContent.substring(i, m+1)) && !".".equals(pContent.substring(i, m+1))
+                            && !"T".equals(pContent.substring(i, m+1)) && !"t".equals(pContent.substring(i, m+1))
+                            && !"M".equals(pContent.substring(i, m+1)) && !"D".equals(pContent.substring(i, m+1))
+                            && !"N".equals(pContent.substring(i, m+1)) && !"L".equals(pContent.substring(i, m+1))
+                            && !"F".equals(pContent.substring(i, m+1)) && !"m".equals(pContent.substring(i, m+1))
+                            && pContent.substring(i, m+1) != null)
+                    {
+//                        System.out.println(i);
+//                        System.out.println(m);
+                        
+                        entero += pContent.substring(i,m+1);
+                        i++;
+                        m++;
+                    }       
+                    int r = Integer.parseInt(entero);
+                    m--;
+                    i--;
+                    MaxVelocity = r;
+                    break;
                     }
                 default:
                     break;
@@ -134,8 +156,8 @@ public class FileProcessor
         m++;
         }
         System.out.println(Road.toString());
-        StraightLine tmp = (StraightLine)Road.get(0);
-        System.out.println(tmp.getMetros());
+//        StraightLine tmp = (StraightLine)Road.get(0);
+//        System.out.println(tmp.getMetros());
     }
       
 }

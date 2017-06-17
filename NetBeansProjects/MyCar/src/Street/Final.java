@@ -9,11 +9,10 @@ package Street;
  *
  * @author diegomv
  */
-public class FourCorners extends StreetSection
+public class Final extends StreetSection
 {
 
-    public FourCorners() {
+    public Final() {
     }
-    
     
 }

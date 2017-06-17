@@ -5,19 +5,27 @@
  */
 package GUI;
 
+import FileToStreet.FileProcessor;
+
 /**
  *
  * @author diegomv
  */
 public class SimulationWindow extends javax.swing.JFrame {
+    
+    public SimulationWindow(){}
 
     /**
      * Creates new form SimulationWindow
      */
-    public SimulationWindow() {
+    public SimulationWindow(String pFile) {
         initComponents();
+        FileProcessor procesa = new FileProcessor();
+        procesa.process(pFile);
+               
     }
-
+    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -14,5 +14,11 @@ public class StraightLine extends StreetSection{
     public StraightLine(int pMetros)
     {
         this.Metros = pMetros;
+       
     }
+
+    public int getMetros() {
+        return Metros;
+    }
+    
 }

@@ -4,8 +4,6 @@ This is the class to process the file and generate the array of StreetSections.
 package FileToStreet;
 
 import Street.*;
-import Street.HundredMeters;
-import Street.Intersection;
 import java.util.ArrayList;
 import Street.StreetSection;
 import java.io.BufferedReader;
@@ -56,6 +54,7 @@ public class FileProcessor
     
     private void analyzeString(String pContent)
     {
+        SectionsFactory Sections = new  SectionsFactory();
         int MaxVelocity = 0;
         int MinVelocity = 0;
         boolean Nigth = false;
@@ -68,21 +67,15 @@ public class FileProcessor
 //            System.out.println(pContent.substring(m,i+1));
             switch (pContent.substring(m, i+1)) {
                 case ".":{
-                    HundredMeters tmp = new HundredMeters();
-                    tmp.info(MaxVelocity, MinVelocity, Nigth, Morning, Rain);
-                    Road.add(Road.size(),tmp);
+                    Road.add(Sections.getSection("HundredMeters", MaxVelocity, MinVelocity, Nigth, Morning, Rain));
                         break;
                     }
                 case "T":{
-                    Intersection tmp = new Intersection();
-                    tmp.info(MaxVelocity, MinVelocity, Nigth, Morning, Rain);
-                    Road.add(Road.size(), tmp);
+                    Road.add(Sections.getSection("Intersection", MaxVelocity, MinVelocity, Nigth, Morning, Rain));
                         break;
                     }
                 case "t":{
-                    FourCorners tmp = new FourCorners();
-                    tmp.info(MaxVelocity, MinVelocity, Nigth, Morning, Rain);
-                    Road.add(Road.size(), tmp);
+                   Road.add(Sections.getSection("FourCorners", MaxVelocity, MinVelocity, Nigth, Morning, Rain));
                         break;
                     }
                 case "D":
@@ -97,9 +90,7 @@ public class FileProcessor
                     Rain = true;
                     break;
                 case "F":{
-                    Final tmp = new Final();
-                    tmp.info(MaxVelocity, MinVelocity, Nigth, Morning, Rain);
-                    Road.add(Road.size(), tmp);
+                    Road.add(Sections.getSection("Final", MaxVelocity, MinVelocity, Nigth, Morning, Rain));
                         break;
                     }
                 case "m":{

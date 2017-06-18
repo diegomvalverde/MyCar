@@ -5,17 +5,28 @@
  */
 package GUI;
 
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ger08
  */
-public class ViewCar extends javax.swing.JFrame {
+public class ViewCar extends javax.swing.JFrame implements KeyListener{
 
+    private boolean Central = false;
+    private boolean Rigth = false;
+    private boolean Left = false;
     /**
      * Creates new form ViewCar
      */
     public ViewCar() {
         initComponents();
+        jLabel4.setIcon(new ImageIcon(new ImageIcon("centro.png").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_DEFAULT)));
+//        jLabel4.setVisible(true);
+        jButton2.addKeyListener(this);
     }
 
     /**
@@ -28,8 +39,9 @@ public class ViewCar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -48,9 +60,9 @@ public class ViewCar extends javax.swing.JFrame {
         setTitle(" Car (Gerardo Gutierrez - Diego Mendez)");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Resourses/8abbef52d5f545989d3ecdc9082ea343.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 780, 440));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Resourses/volante-f852_high.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 246, 220, 210));
 
         jButton2.setText("Brake");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +72,10 @@ public class ViewCar extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 590, -1, 36));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Resourses/8abbef52d5f545989d3ecdc9082ea343.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 780, 440));
+
         jButton3.setText("GAS");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +84,7 @@ public class ViewCar extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 590, -1, 36));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Resourses/road-691124_960_720.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Resourses/calle.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, -60, 830, 420));
 
@@ -121,6 +137,51 @@ public class ViewCar extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+           
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        if(ke.getKeyCode() == 37)
+        {
+            if(!Central && Rigth)
+            {
+        jLabel4.setIcon(new ImageIcon(new ImageIcon("centro.png").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_DEFAULT)));
+                Central = true;
+                Rigth = false;
+            }else
+            {
+        jLabel4.setIcon(new ImageIcon(new ImageIcon("izquierda.png").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_DEFAULT)));
+                Central =false;
+                Left = true;
+            }
+        } else   if(ke.getKeyCode() == 39)
+        {
+            if(!Central && Left)
+            {
+        jLabel4.setIcon(new ImageIcon(new ImageIcon("centro.png").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_DEFAULT)));
+                Central = true;
+                Left = false;
+            }else
+            {
+        jLabel4.setIcon(new ImageIcon(new ImageIcon("derecha.png").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_DEFAULT)));
+                Central =false;
+                Rigth = true;
+            }
+        } 
+         System.out.println("Key pressed code=" + ke.getKeyCode() + ", char=" + ke.getKeyChar());
+    }
+
+
 }

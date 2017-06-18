@@ -8,10 +8,37 @@ import GUI.Config;
 import CarSystems.ISystems;
 import CarSystems.Obstacles;
 import CarSystems.SystemClass;
+import FileToStreet.FileProcessor;
+import Street.StreetSection;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
-public class Simulation {
+public class Simulation{
+    private ArrayList<StreetSection> Road = new ArrayList<StreetSection>();
+    private String File = "";
+
+    public ArrayList<StreetSection> getRoad() {
+        return Road;
+    }
+
+    public void setRoad(ArrayList<StreetSection> Road) {
+        this.Road = Road;
+    }
+
+    public String getFile() {
+        return File;
+    }
+
+    public void setFile(String File) {
+        this.File = File;
+    }
+    
+    public void getStreet()
+    {
+        FileProcessor tmp= new FileProcessor();
+        tmp.process(File);
+    }
     
     public static void main(String args[])
     {

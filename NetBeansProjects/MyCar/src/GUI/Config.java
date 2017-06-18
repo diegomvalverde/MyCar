@@ -117,10 +117,9 @@ public class Config extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         if(!"".equals(Archivo) && Archivo != null){
-            SimulationWindow simulacion = new SimulationWindow(Archivo);
- 
-            simulacion.setVisible(true);
-            this.setVisible(false);
+            ViewCar sim = new ViewCar();
+            sim.setVisible(true);
+            sim.setFile(Archivo);
         }else{
         JOptionPane.showMessageDialog(null, "Se debe escojer un archivo");
     }

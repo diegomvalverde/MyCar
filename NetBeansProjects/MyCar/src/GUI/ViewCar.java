@@ -5,9 +5,12 @@
  */
 package GUI;
 
+import FileToStreet.FileProcessor;
+import Street.StreetSection;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -19,6 +22,16 @@ public class ViewCar extends javax.swing.JFrame implements KeyListener{
     private boolean Central = false;
     private boolean Rigth = false;
     private boolean Left = false;
+    private String File = "";
+    private ArrayList<StreetSection> Road = new ArrayList<>();
+
+    public String getFile() {
+        return File;
+    }
+
+    public void setFile(String File) {
+        this.File = File;
+    }
     /**
      * Creates new form ViewCar
      */
@@ -182,6 +195,15 @@ public class ViewCar extends javax.swing.JFrame implements KeyListener{
         } 
          System.out.println("Key pressed code=" + ke.getKeyCode() + ", char=" + ke.getKeyChar());
     }
+    
+    private void getArray()
+    {
+        FileProcessor pro = new FileProcessor();
+        Road = pro.process(File);
+        
+    }
+    
+   
 
 
 }

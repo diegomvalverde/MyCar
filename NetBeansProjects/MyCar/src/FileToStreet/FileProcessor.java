@@ -13,7 +13,7 @@ public class FileProcessor
 {
     private ArrayList<StreetSection> Road = new ArrayList<StreetSection>();
     
-    public void  process(String pFile)
+    public ArrayList<StreetSection> process(String pFile)
     {
         String FileContent = "";
         BufferedReader br = null;
@@ -50,6 +50,7 @@ public class FileProcessor
         }
         
         analyzeString(FileContent);
+        return Road;
     }
     
     private void analyzeString(String pContent)
